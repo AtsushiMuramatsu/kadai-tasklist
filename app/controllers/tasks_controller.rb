@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_shigoto, only: [:show, :edit, :update, :destroy]
   def index
      @tasks = Task.all
   end
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   
   private
   
-    def set_message
+    def set_shigoto
      @task = Task.find(params[:id])
     end
 
