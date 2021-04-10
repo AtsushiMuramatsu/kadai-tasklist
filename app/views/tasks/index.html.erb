@@ -1,10 +1,19 @@
+<% if logged_in? %>
+<p>ログイン完了ユーザ: <%= current_user.name %></p>
 <h1>タスク一覧</h1>
 
-<ul>
   <% @tasks.each do |task| %>
      <li><%= link_to task.id, task %> : <%= task.content %> &gt; <%= task.status %></li>
   <% end %>
   
 <%= link_to 'タスクの投稿', new_task_path %>
 
-</ul>
+
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome to the tasks</h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+<% end %>
