@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
       # ログイン成功
       session[:user_id] = @user.id
       return true
+      redirect_to tasks_path
     else
       # ログイン失敗
       return false
