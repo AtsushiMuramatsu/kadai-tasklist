@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-
+  
   def destroy
     session[:user_id] = nil
     flash[:success] = 'ログアウトしました。'
@@ -31,6 +31,7 @@ class SessionsController < ApplicationController
     else
       # ログイン失敗
       return false
+      
     end
   end
 end
