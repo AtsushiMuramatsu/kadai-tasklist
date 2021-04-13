@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
+  before_action :correct_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_shigoto, only: [:show, :edit, :update, :destroy]
   def index
     if logged_in?
@@ -52,6 +53,13 @@ class TasksController < ApplicationController
   
     def set_shigoto
      @task = Task.find(params[:id])
+    end
+    
+    def correct_user
+    @task = current_user.tasks.find_by(id: params[:id])
+    unless @task
+      redirect_to root_url
+    end
     end
 
   # Strong Parameter
