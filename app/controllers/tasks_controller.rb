@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
-  before_action :set_shigoto, only: [:show, :edit, :update, :destroy]
   def index
     if logged_in?
       @task = current_user.tasks.build  # form_with 用
