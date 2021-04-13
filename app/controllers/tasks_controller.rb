@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def new
       @task = Task.new
   end
-
+  
   def create
     @task = current_user.tasks.build(task_params)
     
