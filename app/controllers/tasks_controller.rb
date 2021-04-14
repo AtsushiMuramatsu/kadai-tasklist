@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   before_action :set_shigoto, only: [:show, :edit, :update, :destroy]
+  
   def index
     if logged_in?
       @task = current_user.tasks.build  # form_with 用
@@ -43,8 +44,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
-
+    @task.destroy!
+    
     flash[:success] = 'タスク は正常に削除されました'
     redirect_to tasks_path
   end
