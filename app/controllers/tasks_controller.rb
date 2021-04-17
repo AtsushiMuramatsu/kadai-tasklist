@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:show, :edit, :destroy]
+  before_action :correct_user, only: [:show ,:edit,:destroy,:update]
 
   def index
+      @task = current_user.tasks.build
       @tasks = current_user.tasks.order(id: :desc).page(params[:page])
   end
   
   def show
-    
   end
 
   def new
@@ -48,10 +48,6 @@ class TasksController < ApplicationController
   end
   
   private
-  
-    def set_shigoto
-     @task = Task.find(params[:id])
-    end
     
     def correct_user
     @task = current_user.tasks.find_by(id: params[:id])
